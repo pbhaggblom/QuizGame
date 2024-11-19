@@ -2,44 +2,39 @@ package server;
 
 public class QuizGame extends Thread {
 
-    Player player1;
-    Player player2;
-    Player activePlayer;
+    private Player player1;
+    private Player player2;
+    private Player activePlayer;
 
     public QuizGame(Player player1, Player player2) {
         this.player1 = player1;
         this.player2 = player2;
     }
 
-    public Player getPlayer1() {
-        return player1;
-    }
-
-    public void setPlayer1(Player player1) {
-        this.player1 = player1;
-    }
-
-    public Player getPlayer2() {
-        return player2;
-    }
-
-    public void setPlayer2(Player player2) {
-        this.player2 = player2;
-    }
-
     @Override
     public void run() {
 
-            System.out.println(player1.receive());
-            System.out.println(player2.receive());
+        int i = 0;
 
-            activePlayer = player1;
+        System.out.println(player1.receive());
+        System.out.println(player2.receive());
 
-            String input = "";
+        activePlayer = player1;
+        player2.send("inaktiv");
 
-            while ((input = activePlayer.receive()) != null) {
-                System.out.println(input);
+        String input;
+        while (true) {
+
+            if ((input = activePlayer.receive()) != null) {
+                System.out.println(activePlayer.getName() + " " + input + " " + i);
+                activePlayer.send("inaktiv");
+                activePlayer = activePlayer.getOpponent();
+                activePlayer.send("aktiv");
+                i++;
             }
+
+
+        }
 
     }
 }
