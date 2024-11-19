@@ -14,10 +14,8 @@ public class QuizGame extends Thread {
     @Override
     public void run() {
 
-        int i = 0;
-
-        System.out.println(player1.receive());
-        System.out.println(player2.receive());
+        System.out.println(player1.getName() + " " + player1.receive());
+        System.out.println(player2.getName() + " " + player2.receive());
 
         activePlayer = player1;
         player2.send("inaktiv");
@@ -25,12 +23,16 @@ public class QuizGame extends Thread {
         String input;
         while (true) {
 
-            if ((input = activePlayer.receive()) != null) {
-                System.out.println(activePlayer.getName() + " " + input + " " + i);
-                activePlayer.send("inaktiv");
-                activePlayer = activePlayer.getOpponent();
-                activePlayer.send("aktiv");
-                i++;
+            try {
+                if ((input = activePlayer.receive()) != null) {
+                    System.out.println(activePlayer.getName() + " " + input);
+                    activePlayer.send("inaktiv");
+                    activePlayer = activePlayer.getOpponent();
+                    activePlayer.send("aktiv");
+                }
+            } catch (RuntimeException e) {
+                System.out.println("Active player disconnected");
+                break;
             }
 
 
