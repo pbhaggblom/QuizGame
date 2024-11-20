@@ -1,14 +1,29 @@
 package server;
 
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.util.Properties;
+
 public class QuizGame extends Thread {
 
     private Player player1;
     private Player player2;
     private Player activePlayer;
+    private int numOfRounds;
+    private int numOfQuestionsPerRound;
 
     public QuizGame(Player player1, Player player2) {
         this.player1 = player1;
         this.player2 = player2;
+
+        Properties p = new Properties();
+        try {
+            p.load(new FileInputStream("src/settings.properties"));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        numOfRounds = Integer.parseInt(p.getProperty("numOfRounds", "3"));
+        numOfQuestionsPerRound = Integer.parseInt(p.getProperty("numOfQuestionsPerRound", "3"));
     }
 
     @Override
