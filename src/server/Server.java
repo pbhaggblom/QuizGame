@@ -6,7 +6,7 @@ import java.net.ServerSocket;
 public class Server {
 
     public Server() {
-        try (ServerSocket ss =new ServerSocket(55555)) {
+        try (ServerSocket ss = new ServerSocket(55555)) {
             while (true) {
                 Player player1 = new Player(ss.accept(), "Player 1");
                 Player player2 = new Player(ss.accept(), "Player 2");
