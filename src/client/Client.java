@@ -1,5 +1,7 @@
 package client;
 
+import GameLogic.TheQuiz;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -17,6 +19,7 @@ public class Client extends JFrame implements ActionListener {
     PrintWriter out;
     BufferedReader in;
     Socket s;
+    TheQuiz quiz = new TheQuiz();
 
     public Client() {
         add(p);
@@ -57,5 +60,8 @@ public class Client extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         out.println("Knapptryck");
+
+        }
     }
-}
+
+

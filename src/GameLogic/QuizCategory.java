@@ -1,9 +1,9 @@
-package server;
+package GameLogic;
 
 public class QuizCategory {
 
         private String name;
-        private Questions [] categories;
+        private Questions[] categories;
 
         public QuizCategory (String name, Questions[] categories) {
             this.name = name;

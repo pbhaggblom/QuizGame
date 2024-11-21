@@ -1,4 +1,4 @@
-package server;
+package GameLogic;
 
 public class Questions {
 
@@ -13,7 +13,7 @@ public class Questions {
 
         }
 
-        public String getIdQuestion() {
+        public String getQuestion() {
             return Question;
         }
 
