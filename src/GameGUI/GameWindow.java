@@ -6,7 +6,7 @@ import java.awt.*;
 public class GameWindow extends JFrame {
     JPanel panel = new JPanel();
     JLabel label = new JLabel("Quiz Game");
-    JButton startButton = new JButton("Starta nytt spel");
+    public JButton startButton = new JButton("Starta nytt spel");
     JButton category1 = new JButton("Category 1");
     JButton category2 = new JButton("Category 2");
     public GameWindow() {
@@ -43,10 +43,6 @@ public class GameWindow extends JFrame {
         category1.setSize(100, 40);
         c.gridx = 0;
         c.gridy = 2;
-    }
-
-    public static void main(String[] args) {
-        new GameWindow();
     }
 }
 
