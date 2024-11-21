@@ -6,8 +6,8 @@ import java.util.Properties;
 
 public class QuizGame extends Thread {
 
-    private Player player1;
-    private Player player2;
+    private final Player player1;
+    private final Player player2;
     private Player activePlayer;
     private int numOfRounds;
     private int numOfQuestionsPerRound;
