@@ -4,46 +4,84 @@ import javax.swing.*;
 import java.awt.*;
 
 public class GameWindow extends JFrame {
-    JPanel panel = new JPanel();
+    JPanel panelStart = new JPanel();
+    JPanel panelCategories = new JPanel();
+    JPanel panelQuestions = new JPanel();
     JLabel label = new JLabel("Quiz Game");
-    public JButton startButton = new JButton("Starta nytt spel");
-    JButton category1 = new JButton("Category 1");
-    JButton category2 = new JButton("Category 2");
+    JButton startButton = new JButton();
+    JButton category1 = new JButton();
+    JButton category2 = new JButton();
+    JButton answer1 = new JButton();
+    JButton answer2 = new JButton();
+    JButton answer3 = new JButton();
+    JButton answer4 = new JButton();
+
     public GameWindow() {
-        add(panel);
-        panel.setLayout(new GridBagLayout());
-        GridBagConstraints c = new GridBagConstraints();
+        setTitle("Quiz Game");
+        panelStart.setLayout(new GridBagLayout());
 
-        c.anchor = GridBagConstraints.PAGE_START;
-        c.gridx = 0;
-        c.gridy = 0;
-        panel.add(label, c);
+        startWindow();
 
-        startWindow(c);
-
-        setSize(400, 800);
+        setSize(400, 700);
         setVisible(true);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
 
     }
-    public void startWindow(GridBagConstraints c) {
-        startButton.setPreferredSize(new Dimension(150, 40));
-        startButton.setSize(100, 40);
-        c.gridx = 0;
-        c.gridy = 1;
-        panel.add(startButton, c);
+
+    public void startWindow() {
+        StartWindow startWindow = new StartWindow(panelStart, startButton, 0, 1,
+                "Starta nytt spel", label);
+        startWindow.changePanel(panelStart);
+        panelStart = startWindow.changePanelContent();
+        add(panelStart);
 
         startButton.addActionListener(e -> {
-            System.out.println("Spelet startar");
+            panelStart.setVisible(false);
+            categoryWindow();
         });
     }
-    public void categoryWindow(GridBagConstraints c) {
-        category1.setPreferredSize(new Dimension(150, 40));
-        category1.setSize(100, 40);
-        c.gridx = 0;
-        c.gridy = 2;
+
+    public void categoryWindow() {
+        CategoryWindow categoryWindow = new CategoryWindow(panelCategories, category1,
+                category2, 0, 0, "Kategori 1", "Kategori 2");
+        categoryWindow.changePanel(panelCategories);
+        panelCategories = categoryWindow.changePanelContent();
+        add(panelCategories);
+
+        category1.addActionListener(e -> {
+            panelCategories.setVisible(false);
+            questionsWindow();
+        });
+        category2.addActionListener(e -> {
+            panelCategories.setVisible(false);
+            questionsWindow();
+        });
+    }
+
+    public void questionsWindow() {
+        QuestionsWindow questionsWindow = new QuestionsWindow(panelQuestions, answer1,
+                answer2, answer3, answer4, 0, 0,
+                "Svar 1", "Svar 2", "Svar 3", "Svar 4");
+        questionsWindow.changePanel(panelQuestions);
+        panelQuestions = questionsWindow.changePanelContent();
+        add(panelQuestions);
+
+        answer1.addActionListener(e -> {
+            System.out.println("Du valde svar 1");
+        });
+        answer2.addActionListener(e -> {
+            System.out.println("Du valde svar 2");
+        });
+        answer3.addActionListener(e -> {
+            System.out.println("Du valde svar 3");
+        });
+        answer4.addActionListener(e -> {
+            System.out.println("Du valde svar 4");
+        });
+
+    }
+    public static void main(String[] args) {
+        new GameWindow();
     }
 }
-
-
