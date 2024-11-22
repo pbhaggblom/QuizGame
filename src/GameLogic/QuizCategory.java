@@ -1,5 +1,7 @@
 package GameLogic;
 
+//test
+
 public class QuizCategory {
 
         private String name;

@@ -11,7 +11,7 @@ public class TheQuiz {
 
     Questions[] christmasQuestions = {
             new Questions("In which of these countries do they celebrate Christmas on the 24th of December?", new String[]{"Sweden", "United Kingdom", "Ireland", "France"}, "0"),
-            new Questions("What's Santa Clause called in Sweden?", new String[]{"Julnisse", "Julgubbe", "Jultome", "Julbocken"}, "2")};
+            new Questions("What's Santa Clause called in Sweden?", new String[]{"Julnisse", "Julgubbe", "Jultomte", "Julbocken"}, "2")};
 
     Questions[] animalsQuestions = {
             new Questions("What's the latin name for spider?", new String[]{"Longleggius", "Spididoo", "Araneau", "Zeuzus"}, "2"),
@@ -82,6 +82,8 @@ public class TheQuiz {
 
             out.flush();
 
+
+
             int userAnswer;
 
             while (true) {
@@ -105,8 +107,8 @@ public class TheQuiz {
                 break;
             }
         }
-    }}
-
+    }
+}
 
 
 
