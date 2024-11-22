@@ -21,18 +21,18 @@ public class Client {
         gw.startButton.addActionListener(e -> connectToServer());
 
         String fromServer;
-//        while (true) {
+        while (true) {
 //            try {
 //                fromServer = in.readLine();
 //                if (fromServer.equals("inaktiv")) {
-//                    b.setEnabled(false);
+//                    //wait
 //                } else if (fromServer.equals("aktiv")) {
-//                    b.setEnabled(true);
+//                    //kategori eller frågor
 //                }
 //            } catch (IOException e) {
 //                throw new RuntimeException(e);
 //            }
-//        }
+        }
     }
 
     public void connectToServer() {

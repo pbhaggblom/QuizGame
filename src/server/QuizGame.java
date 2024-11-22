@@ -41,17 +41,24 @@ public class QuizGame extends Thread {
             try {
                 if ((input = activePlayer.receive()) != null) {
                     System.out.println(activePlayer.getName() + " " + input);
-                    activePlayer.send("inaktiv");
-                    activePlayer = activePlayer.getOpponent();
-                    activePlayer.send("aktiv");
+                    //välj kategori
+                    //svara på frågor
+                    //spara resultat
+                    changeActivePlayer();
+                    //svara på frågor
+                    //spara resultat
                 }
             } catch (RuntimeException e) {
                 System.out.println("Active player disconnected");
                 break;
             }
-
-
         }
 
+    }
+
+    public void changeActivePlayer() {
+        activePlayer.send("inaktiv");
+        activePlayer = activePlayer.getOpponent();
+        activePlayer.send("aktiv");
     }
 }

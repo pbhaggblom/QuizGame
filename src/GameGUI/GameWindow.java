@@ -8,7 +8,7 @@ public class GameWindow extends JFrame {
     JPanel panelCategories = new JPanel();
     JPanel panelQuestions = new JPanel();
     JLabel label = new JLabel("Quiz Game");
-    JButton startButton = new JButton();
+    public JButton startButton = new JButton();
     JButton category1 = new JButton();
     JButton category2 = new JButton();
     JButton answer1 = new JButton();
@@ -81,7 +81,5 @@ public class GameWindow extends JFrame {
         });
 
     }
-    public static void main(String[] args) {
-        new GameWindow();
-    }
+
 }
